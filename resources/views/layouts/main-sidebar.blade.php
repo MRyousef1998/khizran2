@@ -134,8 +134,10 @@
 						<ul class="slide-menu">
 						
 							<li><a class="slide-item" href="{{ url('/' . $page='companies') }}">اضافة شركة</a></li>
-							@can('المستخدمين')<li><a class="slide-item" href="{{ url('/' . ($page = 'roles')) }}">صلاحيات المستخدمين</a></li>
-                            <li><a class="slide-item" href="{{ url('/' . ($page = 'users')) }}">قائمة المستخدمين</a></li>@endcan
+							@can('المستخدمين')
+							<li><a class="slide-item" href="{{ url('/' . ($page = 'roles')) }}">صلاحيات المستخدمين</a></li>
+                            <li><a class="slide-item" href="{{ url('/' . ($page = 'users')) }}">قائمة المستخدمين</a></li>
+							@endcan
 
 
 							
