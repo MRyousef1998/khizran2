@@ -18,9 +18,9 @@
 						<div class="card-body pb-0 h-100">
 							<div  class="text-center">
 							@if($x->box_image_name!=null)
-								<img src="https://khaizran.online/Attachments/Box/mybox{{$x->box_id}}/{{$x->box_image_name}}" alt="img" class="img-fluid">
+								<img src="https://khaizran2.online/Attachments/Box/mybox{{$x->box_id}}/{{$x->box_image_name}}" alt="img" class="img-fluid">
 								@else
-								<img src="https://khaizran.online/assets/img/add_image.png" class="img-fluid" alt="image"/></div>
+								<img src="https://khaizran2.online/assets/img/add_image.png" class="img-fluid" alt="image"/></div>
 		
 										@endif
 							</div>

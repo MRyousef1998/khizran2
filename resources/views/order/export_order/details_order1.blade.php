@@ -200,7 +200,7 @@
                                         <td style="text-align: center;vertical-align: middle;">
                                             
                                             <div class = "vertical"><div>
-                                                <img src="http://khaizran.online/Attachments/{{ $x->id }}/{{ $x->image_name }}"  width="180"  height="120" /></div>
+                                                <img src="http://khaizran2.online/Attachments/{{ $x->id }}/{{ $x->image_name }}"  width="180"  height="120" /></div>
                                                 <div>
                                                     {{ $x->product_name }}</div>
                                             </div>
@@ -276,7 +276,7 @@
                                         <td style="text-align: center;vertical-align: middle;">
                                             
                                             <div class = "vertical"><div>
-                                                <img src="http://khaizran.online/Attachments/{{ $x->id }}/{{ $x->image_name }}"  width="180"  height="120" /></div>
+                                                <img src="http://khaizran2.online/Attachments/{{ $x->id }}/{{ $x->image_name }}"  width="180"  height="120" /></div>
                                                 <div>
                                                     {{ $x->product_name }}</div>
                                             </div>
