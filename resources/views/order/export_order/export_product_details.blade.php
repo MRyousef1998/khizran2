@@ -15,7 +15,7 @@
 								<div class="row row-sm ">
 									<div class=" col-xl-5 col-lg-12 col-md-12">
 										<div class="preview-pic tab-content">
-										  <div class="tab-pane active" id="pic-1"><img src="http://khaizran.online/Attachments/{{ $product[0]->id }}/{{ $product[0]->image_name }}" width="250"  height="250" alt="image"/></div>
+										  <div class="tab-pane active" id="pic-1"><img src="http://khaizran2.online/Attachments/{{ $product[0]->id }}/{{ $product[0]->image_name }}" width="250"  height="250" alt="image"/></div>
 										 
 										</div>
 										

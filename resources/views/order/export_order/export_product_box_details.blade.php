@@ -21,7 +21,7 @@
 								<div class="row row-sm ">
 									<div class=" col-xl-5 col-lg-12 col-md-12">
 										<div class="preview-pic tab-content">
-										  <div class="tab-pane active" id="pic-1"><img src="http://khaizran.online/Attachments/{{ $product[0]->id }}/{{ $product[0]->image_name }}" width="250"  height="250" alt="image"/></div>
+										  <div class="tab-pane active" id="pic-1"><img src="http://khaizran2.online/Attachments/{{ $product[0]->id }}/{{ $product[0]->image_name }}" width="250"  height="250" alt="image"/></div>
 										 
 										</div>
 										
@@ -66,11 +66,11 @@
 						<div class="card item-card" >
 						<div class="card-header pb-0">
 						@if($x->box_image_name!=null)
-										  <div  id="pic-1"><img src="https://khaizran.online/Attachments/Box/mybox{{$x->box_id}}/{{$x->box_image_name}}" width="400pix"  height="90pix" alt="image"/></div>
+										  <div  id="pic-1"><img src="https://khaizran2.online/Attachments/Box/mybox{{$x->box_id}}/{{$x->box_image_name}}" width="400pix"  height="90pix" alt="image"/></div>
 										 
 										
 										@else
-										<div  id="pic-1"><img src="https://khaizran.online/assets/img/add_image.png" width="400pix"  height="90pix" alt="image"/></div>
+										<div  id="pic-1"><img src="https://khaizran2.online/assets/img/add_image.png" width="400pix"  height="90pix" alt="image"/></div>
 		
 										@endif
 </div>
