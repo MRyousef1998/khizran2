@@ -1,24 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Api;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
-
-
-
-use App\Http\Controllers\Controller;
-use  App\Http\Resources\UserApiResource;
-use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use  App\Http\Resources\AuctionResource;
+use App\Models\Auction;
+use  App\Http\Resources\UserResource;
+use App\Models\User;
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\AuctionController;
 
-use App\Providers\RouteServiceProvider;
+use App\Http\Controllers\Api\AuthController;
 
-
-use App\Mail\SinupEmail;
-
-use Illuminate\Support\Facades\Validator;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +22,13 @@ use Illuminate\Support\Facades\Validator;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::post('auth/register', [AuthController::class,'register']);
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'auth'
+], function ($router) {
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/refresh', [AuthController::class, 'refresh']);
+    Route::get('/user-profile', [AuthController::class, 'userProfile']);    
 });
