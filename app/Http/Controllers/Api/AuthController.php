@@ -55,7 +55,6 @@ public function register(Request $request) {
     $validator = Validator::make($request->all(), [
         'name' => 'required|string|between:2,100',
         'mobile' => 'required',
-        'role_id' => 'required',
         'email' => 'required|string|email|max:100|unique:users',
         'password' => 'required|string|min:6',
     ]);
@@ -63,37 +62,11 @@ public function register(Request $request) {
     if($validator->fails()){
         return response()->json($validator->errors()->toJson(), 400);
     }
-        //  $user= new User();
-                
-       
-        //    $user-> name = $request->input('name');
-        //  //  $user-> last_name= $request->input('last_name');
-        //    $user-> email = $request->input('email');
-        //    $user-> password = Hash::make($request->input('password'));
-        //    $user->verification_code = sha1(time());
-        // $user-> mobile = $request->input('mobile');
-        // $user-> role_id =1;
-        //    $user->save();
-              
-           
-        //    $credentials =$request->only('email','password');
-        //    if(Auth::attempt($credentials)){
-        //           $user=User::where(
-        //               'email',$request->input('email')
-
-        //           )->first();
-                  
-        //           $user = Auth::user();
-                  
-        //           $token=$user->createToken('api_token');
-        //           return $token;
-        //   $user->api_token=$token->plainTextToken;
-        //   $user->save();
-         
-        //  return new UserApiResource($user);
+      
     $user = User::create(array_merge(
                 $validator->validated(),
-                ['password' => bcrypt($request->password)]
+                ['password' => bcrypt($request->password),
+                'role_id'=>1]
             ));
     return response()->json([
         'message' => 'User successfully registered',
