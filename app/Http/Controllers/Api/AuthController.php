@@ -32,7 +32,7 @@ class AuthController extends Controller
  * @return \Illuminate\Http\JsonResponse
  */
 public function login(Request $request){
-  
+  return $request;
   $validator = Validator::make($request->all(), [
         'email' => 'required|email',
         'password' => 'required|string|min:6',
