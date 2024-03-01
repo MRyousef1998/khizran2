@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-
+use App\Notifications\EmailVerificationNotification;
 
 
 use App\Http\Controllers\Controller;
@@ -68,6 +68,7 @@ public function register(Request $request) {
                 ['password' => bcrypt($request->password),
                 'role_id'=>1]
             ));
+            $user->notify(new EmailVerificationNotification());
     return response()->json([
         'message' => 'User successfully registered',
         'user' => $user
