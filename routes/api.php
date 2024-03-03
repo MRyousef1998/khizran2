@@ -10,6 +10,8 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\AuctionController;
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\EmailVerificationController;
+
 
 
 /*
@@ -30,5 +32,10 @@ Route::group([
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
-    Route::get('/user-profile', [AuthController::class, 'userProfile']);    
+    Route::get('/user-profile', [AuthController::class, 'userProfile']);  
+    Route::post('/email-verification', [EmailVerificationController::class, 'email_verification']);    
+
+   
+
 });
+

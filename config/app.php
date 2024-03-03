@@ -178,6 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Ichtrojan\Otp\OtpServiceProvider::class,
+        Laravel\Sanctum\SanctumServiceProvider::class,
     ],
 
     /*
