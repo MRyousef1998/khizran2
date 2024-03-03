@@ -16,6 +16,15 @@ $this->otp=new Otp;
 
 }
   public function email_verification(EmailVerificationRequest $request){
+    $validator = Validator::make($request->all(), [
+      
+      'email' => 'required|string|email|max:100|unique:users|exists:users',
+      'password' => 'required|string|min:6',
+  ]);
+ 
+  if($validator->fails()){
+      return response()->json($validator->errors()->toJson(), 400);
+  }
 
     $otp2=$this->otp->validate($request->email,$request->otp);
     if(!$otp2->status){
