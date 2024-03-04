@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use  App\Http\Requests\Auth\EmailVerificationRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
+
 use Otp;
 
 class EmailVerificationController extends Controller
@@ -18,8 +20,8 @@ $this->otp=new Otp;
   public function email_verification(EmailVerificationRequest $request){
     $validator = Validator::make($request->all(), [
       
-      'email' => 'required|string|email|max:100|unique:users|exists:users',
-      'password' => 'required|string|min:6',
+      'email' => 'required|string|email|max:100|exists:users',
+      'otp' => 'required|string|min:5',
   ]);
  
   if($validator->fails()){
@@ -28,7 +30,8 @@ $this->otp=new Otp;
 
     $otp2=$this->otp->validate($request->email,$request->otp);
     if(!$otp2->status){
-            return response()->json(['error'=>$this->otp],401);
+      $success['success']=false;
+      return response()->json($success,200);
     }
     $user=User::where('email',$request->email)->first();
     $user->update(["email_verified"=>1]);
