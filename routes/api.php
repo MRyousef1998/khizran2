@@ -11,6 +11,8 @@ use App\Http\Controllers\Api\AuctionController;
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\EmailVerificationController;
+use App\Http\Controllers\Api\ChekEmailController;
+
 
 
 
@@ -33,7 +35,9 @@ Route::group([
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);  
-    Route::post('/email-verification', [EmailVerificationController::class, 'email_verification']);    
+    Route::post('/email-verification', [EmailVerificationController::class, 'email_verification']);  
+    Route::post('/email-check', [ChekEmailController::class, 'email_check']);    
+
 
    
 
