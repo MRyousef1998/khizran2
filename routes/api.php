@@ -12,6 +12,8 @@ use App\Http\Controllers\Api\AuctionController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\EmailVerificationController;
 use App\Http\Controllers\Api\ChekEmailController;
+use App\Http\Controllers\Api\ResetPasswordController;
+
 
 
 
@@ -37,7 +39,7 @@ Route::group([
     Route::get('/user-profile', [AuthController::class, 'userProfile']);  
     Route::post('/email-verification', [EmailVerificationController::class, 'email_verification']);  
     Route::post('/email-check', [ChekEmailController::class, 'email_check']);    
-
+    Route::post('/reset-password', [ResetPasswordController::class, 'reset_password']); 
 
    
 
