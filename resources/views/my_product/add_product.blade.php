@@ -374,7 +374,7 @@ $('.increment-btn').click(function (e) {
 
     var value = parseInt(incre_value, 10);
     value = isNaN(value) ? 0 : value;
-    if(value<100){
+    if(value<1001){
         value++;
         $(this).parents('.quantity').find('.qty-input').val(value);
   
