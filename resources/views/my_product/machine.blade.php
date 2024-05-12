@@ -205,8 +205,9 @@
                                     <th class="border-bottom-0"  style="text-align: center;vertical-align: middle;  ">الشركة</th>
                                     <th class="border-bottom-0" style="text-align: center;vertical-align: middle;  ">اسم المنتج</th>
                                     <th class="border-bottom-0" style="text-align: center;vertical-align: middle;  ">الصنف</th>
-                                    <th class="border-bottom-0" style="text-align: center;vertical-align: middle;  ">بلد المنشأ</th>
                                     <th class="border-bottom-0" style="text-align: center;vertical-align: middle;  ">العدد </th>
+                                    
+                                    <th class="border-bottom-0" style="text-align: center;vertical-align: middle;  ">بلد المنشأ</th>
 
                                 </tr>
                             </thead>
@@ -231,15 +232,16 @@
                                             </td>
                                       
                                         <td style="text-align: center;vertical-align: middle;">{{ $x->group_name }}</td>
-
-                                        <td style="text-align: center;vertical-align: middle; color:rgb(207, 14, 14); " >{{ $x->country_of_manufacture }}</td>
-                                        
-                                        <td   style="text-align: center;vertical-align: middle;  ">
+                                          <td   style="text-align: center;vertical-align: middle;  ">
                                             
                                                  <a href="{{url('productDetails')}}/{{$x->id}}" > {{$x->aggregate}}
                                                
                                             </a>
                                         </td>
+
+                                        <td style="text-align: center;vertical-align: middle; color:rgb(207, 14, 14); " >{{ $x->country_of_manufacture }}</td>
+                                        
+                                      
 
 
                                         
