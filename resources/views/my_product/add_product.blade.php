@@ -120,7 +120,7 @@
                                                                     <div class="input-group-prepend decrement-btn" style="cursor: pointer">
                                                                         <span class="input-group-text" >-</span>
                                                                     </div>
-                                                                    <input type="text" class="qty-input form-control  "  id= "qountity" name ="qountity"style="text-align: center;vertical-align: middle;" maxlength="3" max="10" value="0">
+                                                                    <input type="text" class="qty-input form-control  "  id= "qountity" name ="qountity"style="text-align: center;vertical-align: middle;" maxlength="4" max="10" value="0">
                                                                     <div class="input-group-append increment-btn" style="cursor: pointer">
                                                                         <span class="input-group-text"  >+</span>
                                                                     </div>
@@ -374,7 +374,7 @@ $('.increment-btn').click(function (e) {
 
     var value = parseInt(incre_value, 10);
     value = isNaN(value) ? 0 : value;
-    if(value<100){
+    if(value<1001){
         value++;
         $(this).parents('.quantity').find('.qty-input').val(value);
   
