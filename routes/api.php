@@ -13,6 +13,8 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\EmailVerificationController;
 use App\Http\Controllers\Api\ChekEmailController;
 use App\Http\Controllers\Api\HomeController;
+use App\Http\Controllers\Api\ProductesController;
+
 
 use App\Http\Controllers\Api\ResetPasswordController;
 
@@ -54,7 +56,7 @@ Route::group([
 ], function ($router) {
     Route::get('/home-page', [HomeController::class, 'index']);
     
-   
+    Route::post('/productes_categories', [ProductesController::class, 'get_productes_with_category']);
 
 
    
