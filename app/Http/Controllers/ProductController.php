@@ -1273,7 +1273,7 @@ return view('order.export_order.add_product_to_order',compact('order_id','typeOr
   //
 
 
-  public function machine_serch_to_export_order_bycode(Request $request)
+ public function machine_serch_to_export_order_bycode(Request $request)
   { 
    
      if($request->importOrder!=null){
@@ -1283,13 +1283,13 @@ return view('order.export_order.add_product_to_order',compact('order_id','typeOr
             if($request->productstatus==null){
           $machines =DB::table('products')->where("products.statuses_id",'!=',4)->where("products.statuses_id",'!=',7)->
           leftJoin('product_details', 'product_details.id', '=', 'products.product_details_id')->leftJoin('product_groups', 'product_details.group_id', '=', 'product_groups.id')->leftJoin('product_companies', 'product_details.company_id', '=', 'product_companies.id')
-          ->leftJoin('statuses', 'products.statuses_id', '=', 'statuses.id') ->Join('order_product', 'products.id', '=', 'order_product.products_id')->where("order_product.orders_id",$request->importOrder)->where("product_details.category_id",$request->productCatgory)->where("product_details.company_id",$request->productCompany)->where("product_details.group_id",$request->productGroup)->where("products.selling_date", null)
+          ->leftJoin('statuses', 'products.statuses_id', '=', 'statuses.id') ->Join('order_product', 'products.id', '=', 'order_product.products_id')->where("order_product.orders_id",$request->importOrder)->where("product_details.category_id",$request->productCatgory)->where("product_details.company_id",$request->productCompany)->where("products.value_location",$request->productGroup)->where("products.selling_date", null)
           ->get();}
           else{
     
             $machines =DB::table('products')->where("products.statuses_id",'!=',4)->where("products.statuses_id",'=',$request->productstatus)->
             leftJoin('product_details', 'product_details.id', '=', 'products.product_details_id')->leftJoin('product_groups', 'product_details.group_id', '=', 'product_groups.id')->leftJoin('product_companies', 'product_details.company_id', '=', 'product_companies.id')
-            ->leftJoin('statuses', 'products.statuses_id', '=', 'statuses.id') ->Join('order_product', 'products.id', '=', 'order_product.products_id')->where("order_product.orders_id",$request->importOrder)->where("product_details.category_id",$request->productCatgory)->where("product_details.company_id",$request->productCompany)->where("product_details.group_id",$request->productGroup)->where("products.selling_date", null)
+            ->leftJoin('statuses', 'products.statuses_id', '=', 'statuses.id') ->Join('order_product', 'products.id', '=', 'order_product.products_id')->where("order_product.orders_id",$request->importOrder)->where("product_details.category_id",$request->productCatgory)->where("product_details.company_id",$request->productCompany)->where("products.value_location",$request->productGroup)->where("products.selling_date", null)
             ->get();
     
           }
@@ -1298,13 +1298,13 @@ return view('order.export_order.add_product_to_order',compact('order_id','typeOr
             if($request->productstatus==null){
               $machines =DB::table('products')->where("products.statuses_id",'!=',4)->where("products.statuses_id",'!=',7)->
               leftJoin('product_details', 'product_details.id', '=', 'products.product_details_id')->leftJoin('product_groups', 'product_details.group_id', '=', 'product_groups.id')->leftJoin('product_companies', 'product_details.company_id', '=', 'product_companies.id')
-              ->leftJoin('statuses', 'products.statuses_id', '=', 'statuses.id') ->Join('order_product', 'products.id', '=', 'order_product.products_id')->where("order_product.orders_id",$request->importOrder)->where("product_details.category_id",$request->productCatgory)->where("product_details.group_id",$request->productGroup)->where("products.selling_date", null)
+              ->leftJoin('statuses', 'products.statuses_id', '=', 'statuses.id') ->Join('order_product', 'products.id', '=', 'order_product.products_id')->where("order_product.orders_id",$request->importOrder)->where("product_details.category_id",$request->productCatgory)->where("products.value_location",$request->productGroup)->where("products.selling_date", null)
               ->get();}
               else{
     
                 $machines =DB::table('products')->where("products.statuses_id",'!=',4)->where("products.statuses_id",'=',$request->productstatus)->
                 leftJoin('product_details', 'product_details.id', '=', 'products.product_details_id')->leftJoin('product_groups', 'product_details.group_id', '=', 'product_groups.id')->leftJoin('product_companies', 'product_details.company_id', '=', 'product_companies.id')
-                ->leftJoin('statuses', 'products.statuses_id', '=', 'statuses.id') ->Join('order_product', 'products.id', '=', 'order_product.products_id')->where("order_product.orders_id",$request->importOrder)->where("order_product.orders_id",$request->importOrder)->where("product_details.category_id",$request->productCatgory)->where("product_details.group_id",$request->productGroup)->where("products.selling_date", null)
+                ->leftJoin('statuses', 'products.statuses_id', '=', 'statuses.id') ->Join('order_product', 'products.id', '=', 'order_product.products_id')->where("order_product.orders_id",$request->importOrder)->where("order_product.orders_id",$request->importOrder)->where("product_details.category_id",$request->productCatgory)->where("products.value_location",$request->productGroup)->where("products.selling_date", null)
                 ->get();
               }
             
@@ -1352,13 +1352,13 @@ return view('order.export_order.add_product_to_order',compact('order_id','typeOr
             if($request->productstatus==null){
           $machines =DB::table('products')->where("products.statuses_id",'!=',4)->where("products.statuses_id",'!=',7)->
           leftJoin('product_details', 'product_details.id', '=', 'products.product_details_id')->leftJoin('product_groups', 'product_details.group_id', '=', 'product_groups.id')->leftJoin('product_companies', 'product_details.company_id', '=', 'product_companies.id')
-          ->leftJoin('statuses', 'products.statuses_id', '=', 'statuses.id') ->Join('order_product', 'products.id', '=', 'order_product.products_id')->where("product_details.category_id",$request->productCatgory)->where("product_details.company_id",$request->productCompany)->where("product_details.group_id",$request->productGroup)->where("products.selling_date", null)
+          ->leftJoin('statuses', 'products.statuses_id', '=', 'statuses.id') ->Join('order_product', 'products.id', '=', 'order_product.products_id')->where("product_details.category_id",$request->productCatgory)->where("product_details.company_id",$request->productCompany)->where("products.value_location",$request->productGroup)->where("products.selling_date", null)
           ->get();}
           else{
     
             $machines =DB::table('products')->where("products.statuses_id",'!=',4)->where("products.statuses_id",'=',$request->productstatus)->
             leftJoin('product_details', 'product_details.id', '=', 'products.product_details_id')->leftJoin('product_groups', 'product_details.group_id', '=', 'product_groups.id')->leftJoin('product_companies', 'product_details.company_id', '=', 'product_companies.id')
-            ->leftJoin('statuses', 'products.statuses_id', '=', 'statuses.id') ->Join('order_product', 'products.id', '=', 'order_product.products_id')->where("product_details.category_id",$request->productCatgory)->where("product_details.company_id",$request->productCompany)->where("product_details.group_id",$request->productGroup)->where("products.selling_date", null)
+            ->leftJoin('statuses', 'products.statuses_id', '=', 'statuses.id') ->Join('order_product', 'products.id', '=', 'order_product.products_id')->where("product_details.category_id",$request->productCatgory)->where("product_details.company_id",$request->productCompany)->where("products.value_location",$request->productGroup)->where("products.selling_date", null)
            ->get();
     
           }
@@ -1367,13 +1367,13 @@ return view('order.export_order.add_product_to_order',compact('order_id','typeOr
             if($request->productstatus==null){
               $machines =DB::table('products')->where("products.statuses_id",'!=',4)->where("products.statuses_id",'!=',7)->
               leftJoin('product_details', 'product_details.id', '=', 'products.product_details_id')->leftJoin('product_groups', 'product_details.group_id', '=', 'product_groups.id')->leftJoin('product_companies', 'product_details.company_id', '=', 'product_companies.id')
-              ->leftJoin('statuses', 'products.statuses_id', '=', 'statuses.id') ->Join('order_product', 'products.id', '=', 'order_product.products_id')->where("product_details.category_id",$request->productCatgory)->where("product_details.group_id",$request->productGroup)->where("products.selling_date", null)
+              ->leftJoin('statuses', 'products.statuses_id', '=', 'statuses.id') ->Join('order_product', 'products.id', '=', 'order_product.products_id')->where("product_details.category_id",$request->productCatgory)->where("products.value_location",$request->productGroup)->where("products.selling_date", null)
               ->get();}
               else{
     
                 $machines =DB::table('products')->where("products.statuses_id",'!=',4)->where("products.statuses_id",'=',$request->productstatus)->
                 leftJoin('product_details', 'product_details.id', '=', 'products.product_details_id')->leftJoin('product_groups', 'product_details.group_id', '=', 'product_groups.id')->leftJoin('product_companies', 'product_details.company_id', '=', 'product_companies.id')
-                ->leftJoin('statuses', 'products.statuses_id', '=', 'statuses.id') ->Join('order_product', 'products.id', '=', 'order_product.products_id')->where("product_details.category_id",$request->productCatgory)->where("product_details.group_id",$request->productGroup)->where("products.selling_date", null)
+                ->leftJoin('statuses', 'products.statuses_id', '=', 'statuses.id') ->Join('order_product', 'products.id', '=', 'order_product.products_id')->where("product_details.category_id",$request->productCatgory)->where("products.value_location",$request->productGroup)->where("products.selling_date", null)
                 ->get();
               }
             
@@ -1441,7 +1441,6 @@ return view('order.export_order.add_product_to_order_bycode',compact('order_id',
   
 
   }
-
 
 
   //
