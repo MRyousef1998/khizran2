@@ -171,16 +171,23 @@
                             </div><!-- col-4 -->
     
     
-                            <div class="col-lg-2 mg-t-20 mg-lg-t-0" id="type">
-                                <p class="mg-b-10">تحديد الصنف</p><select class="form-control select" name="productGroup"
+                             <div class="col-lg-2 mg-t-20 mg-lg-t-0" id="type">
+                                <p class="mg-b-10">تحديد مكان التواجد</p><select class="form-control select" name="productGroup"
                                     >
                                     <option value="{{ null }}" selected>
                                         {{  'الکل' }}
                                     </option>
+                                    <option value="1" selected>
+                                        المستودع
+                                    </option>
+                                    <option value="2" selected>
+                                        محل كبير
+                                    </option>
+                                    <option value="3" selected>
+                                        محل صغير
+                                    </option>
                                 
-                                    @foreach ($productGroupes as $productGroup)
-                                    <option value="{{ $productGroup->id }}"> {{ $productGroup->group_name }}</option>
-                                @endforeach
+                                  
     
                                     
     
