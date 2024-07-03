@@ -177,13 +177,13 @@
                                     <option value="{{ null }}" selected>
                                         {{  'الکل' }}
                                     </option>
-                                    <option value="1" selected>
+                                    <option value="1" >
                                         المستودع
                                     </option>
-                                    <option value="2" selected>
+                                    <option value="2" >
                                         محل كبير
                                     </option>
-                                    <option value="3" selected>
+                                    <option value="3" >
                                         محل صغير
                                     </option>
                                 
