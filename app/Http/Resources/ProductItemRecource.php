@@ -14,6 +14,8 @@ class ProductItemRecource extends JsonResource
      */
     public function toArray($request)
     {
+        
+
         return [
 
             'product_id'=>$this->id,
@@ -23,6 +25,7 @@ class ProductItemRecource extends JsonResource
             'product_country_of_manufacture'=>$this->country_of_manufacture,
             'product_image_name'=>$this->image_name,
             'product_rate'=>$this->rate,
+            'is_favorite'=>$this->favorit,
             
 
         ];
