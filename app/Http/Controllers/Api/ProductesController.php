@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\CategoryResource;
-use App\Http\Resources\ProductItemRecource;
+use App\Http\Resources\ProductWithFavoriteRecource;
 
 use App\Models\ProductCategory;
 use App\Models\favotit;
@@ -45,7 +45,7 @@ class ProductesController extends Controller
 
 
     
-        $allData['machines_of_this_category']=ProductItemRecource::collection( $final_machines) ;
+        $allData['machines_of_this_category']=ProductWithFavoriteRecource::collection( $final_machines) ;
        
 
         $allData["status"]="success";

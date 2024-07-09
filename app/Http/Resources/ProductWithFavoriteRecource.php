@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ProductItemRecource extends JsonResource
+class ProductWithFavoriteRecource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -25,7 +25,7 @@ class ProductItemRecource extends JsonResource
             'product_country_of_manufacture'=>$this->country_of_manufacture,
             'product_image_name'=>$this->image_name,
             'product_rate'=>$this->rate,
-            
+            'is_favorite'=>$this->favorit,
             
 
         ];
