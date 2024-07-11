@@ -82,4 +82,13 @@ class FavotitController extends Controller
     {
         //
     }
+    public function add_favorite(Request $request)
+    {
+        return $request;
+
+    }
+    public function remove_favorite(Request $request)
+    {
+        return $request;
+    }
 }
