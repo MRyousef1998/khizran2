@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Api;
+use App\Http\Controllers\Controller;
 use App\Models\favotit;
 use Illuminate\Http\Request;
 
@@ -84,11 +84,24 @@ class FavotitController extends Controller
     }
     public function add_favorite(Request $request)
     {
-        return $request;
+        $favotit=  favotit::create([
+            'user_id' => $request->user_id,
+            'product_details_id' => $request->product_details_id,
+
+            
+        ]);
+        return response()->json([
+            'message' => 'favorite successfully added',
+            'favorite' => $favotit
+        ], 201);
 
     }
     public function remove_favorite(Request $request)
     {
-        return $request;
+        $favotit= favotit::where('user_id',$request->user_id)->where('product_details_id',$request->product_details_id)->delete();
+        return response()->json([
+            'message' => 'favorite successfully removed',
+            'favorite' => $favotit
+        ], 201);
     }
 }
