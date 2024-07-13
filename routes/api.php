@@ -61,5 +61,6 @@ Route::group([
 
     Route::post('/add_favorite', [FavotitController::class, 'add_favorite']);
     Route::post('/remove_favorite', [FavotitController::class, 'remove_favorite']);
+    Route::post('/favorite_product', [FavotitController::class, 'favorite_product']);
 
 });

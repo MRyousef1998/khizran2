@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\favotit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FavotitController extends Controller
 {
@@ -101,6 +102,20 @@ class FavotitController extends Controller
         $favotit= favotit::where('user_id',$request->user_id)->where('product_details_id',$request->product_details_id)->delete();
         return response()->json([
             'message' => 'favorite successfully removed',
+            'favorite' => $favotit
+        ], 201);
+    }
+
+
+    public function favorite_product(Request $request)
+    {
+
+        $favotit =DB::table('favotits')->where('user_id',$request->user_id)-> Join('product_details', 'product_details.id', '=', 'favotits.product_details_id')
+        ->leftJoin('product_groups', 'product_details.group_id', '=', 'product_groups.id')->leftJoin('product_companies', 'product_details.company_id', '=', 'product_companies.id')
+        ->selectRaw('product_details.id as product_detailes_id,company_name,product_name,group_name,country_of_manufacture,product_details.image_name,product_details.rate')
+        ->groupBy('product_details.id','company_name','product_name','country_of_manufacture','group_name','product_details.image_name','product_details.rate')->get();
+     return response()->json([
+            'message' => 'favorite get successfully ',
             'favorite' => $favotit
         ], 201);
     }
