@@ -15,6 +15,8 @@ use App\Http\Controllers\Api\ChekEmailController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\ProductesController;
 use App\Http\Controllers\Api\FavotitController;
+use App\Http\Controllers\Api\CartController;
+
 
 
 use App\Http\Controllers\Api\ResetPasswordController;
@@ -62,5 +64,12 @@ Route::group([
     Route::post('/add_favorite', [FavotitController::class, 'add_favorite']);
     Route::post('/remove_favorite', [FavotitController::class, 'remove_favorite']);
     Route::post('/favorite_product', [FavotitController::class, 'favorite_product']);
+
+
+    Route::post('/add_item_to_cart', [CartController::class, 'add_item_to_cart']);
+    Route::post('/remove_item_from_cart', [CartController::class, 'remove_item_from_cart']);
+    Route::post('/get_cart_item', [CartController::class, 'get_cart_item']);
+    Route::post('/get_cart_count_item', [CartController::class, 'get_cart_count_item']);
+
 
 });
