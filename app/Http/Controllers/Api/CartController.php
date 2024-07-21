@@ -126,7 +126,7 @@ class CartController extends Controller
         ->groupBy('product_details.id','company_name','product_name','country_of_manufacture','group_name','product_details.image_name','product_details.rate')->get();
      return response()->json([
             'message' => 'cart itemes get successfully ',
-            'favorite' => $cart_itemes
+            'cartItem' => $cart_itemes
         ], 201);}
 
 }
