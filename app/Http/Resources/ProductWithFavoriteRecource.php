@@ -26,6 +26,7 @@ class ProductWithFavoriteRecource extends JsonResource
             'product_image_name'=>$this->image_name,
             'product_rate'=>$this->rate,
             'is_favorite'=>$this->favorit,
+            'is_avilable'=>$this->avileble,
             
 
         ];
