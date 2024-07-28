@@ -16,6 +16,8 @@ use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\ProductesController;
 use App\Http\Controllers\Api\FavotitController;
 use App\Http\Controllers\Api\CartController;
+use App\Http\Controllers\Api\AddressController;
+
 
 
 
@@ -71,5 +73,10 @@ Route::group([
     Route::post('/get_cart_item', [CartController::class, 'get_cart_item']);
     Route::post('/get_cart_count_item', [CartController::class, 'get_cart_count_item']);
 
+
+    Route::post('/add_adress', [AddressController::class, 'store']);
+    Route::post('/remove_address', [AddressController::class, 'destroy']);
+    Route::post('/get_address', [AddressController::class, 'show']);
+    
 
 });
