@@ -102,7 +102,7 @@ class CartController extends Controller
     }
     public function remove_item_from_cart(Request $request)
     {
-        $cart= Cart::where('user_id',$request->user_id)->where('product_details_id',$request->product_details_id)->first()->delete();
+        $cart= Cart::where('user_id',$request->user_id)->where('product_details_id',$request->product_details_id)->where('order_app_id',0)->first()->delete();
         return response()->json([
             'message' => 'item successfully removed to cart',
             'isremoved' => $cart
@@ -111,7 +111,7 @@ class CartController extends Controller
 
     public function get_cart_count_item(Request $request)
     {
-        $cartCount= Cart::where('user_id',$request->user_id)->where('product_details_id',$request->product_details_id)->get()->count();
+        $cartCount= Cart::where('user_id',$request->user_id)->where('product_details_id',$request->product_details_id)->where('order_app_id',0)->get()->count();
         return response()->json([
             'data' => [
                 "itemCount"=>$cartCount]
@@ -120,7 +120,7 @@ class CartController extends Controller
     public function get_cart_item(Request $request)
     {
 
-        $cart_itemes =DB::table('carts')->where('user_id',$request->user_id)-> Join('product_details', 'product_details.id', '=', 'carts.product_details_id')
+        $cart_itemes =DB::table('carts')->where('user_id',$request->user_id)->where('order_app_id',0)-> Join('product_details', 'product_details.id', '=', 'carts.product_details_id')
         ->leftJoin('product_groups', 'product_details.group_id', '=', 'product_groups.id')->leftJoin('product_companies', 'product_details.company_id', '=', 'product_companies.id')
         ->selectRaw('product_details.id as product_detailes_id,count(product_details.id) as count,company_name,product_name,group_name,country_of_manufacture,product_details.image_name,product_details.rate')
         ->groupBy('product_details.id','company_name','product_name','country_of_manufacture','group_name','product_details.image_name','product_details.rate')->get();

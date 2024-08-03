@@ -17,6 +17,8 @@ use App\Http\Controllers\Api\ProductesController;
 use App\Http\Controllers\Api\FavotitController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\AddressController;
+use App\Http\Controllers\Api\OrderAppController;
+
 
 
 
@@ -75,6 +77,11 @@ Route::group([
 
 
     Route::post('/add_adress', [AddressController::class, 'store']);
+    Route::post('/remove_address', [AddressController::class, 'destroy']);
+    Route::post('/get_address', [AddressController::class, 'show']);
+//////
+
+    Route::post('/add_order_app', [OrderAppController::class, 'store']);
     Route::post('/remove_address', [AddressController::class, 'destroy']);
     Route::post('/get_address', [AddressController::class, 'show']);
     
