@@ -78,9 +78,14 @@ class OrderAppController extends Controller
      * @param  \App\Models\OrderApp  $orderApp
      * @return \Illuminate\Http\Response
      */
-    public function show(OrderApp $orderApp)
+    public function show(Request $request)
     {
-        //
+        
+        $orderApp= OrderApp::where('user_id',$request->user_id)->get();
+        return response()->json([
+            'message' => 'successfully',
+            'orderApp' => $orderApp
+        ], 201);
     }
 
     /**

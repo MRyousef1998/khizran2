@@ -82,8 +82,8 @@ Route::group([
 //////
 
     Route::post('/add_order_app', [OrderAppController::class, 'store']);
-    Route::post('/remove_address', [AddressController::class, 'destroy']);
-    Route::post('/get_address', [AddressController::class, 'show']);
+    Route::post('/get_order_app111', [OrderAppController::class, 'destroy']);
+    Route::post('/get_order_app', [OrderAppController::class, 'show']);
     
 
 });
