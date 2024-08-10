@@ -89,7 +89,7 @@ class NotificationController extends Controller
     
     
     
-    function sendGCM($title, $message, $topic, $pageid, $pagename)
+    function sendGCM(Request $request)
 
 {
 
@@ -103,7 +103,7 @@ class NotificationController extends Controller
 
     $fields = array(
 
-        "to" => '/topics/' . $topic,
+        "to" => '/topics/' . $request->topic,
 
         'priority' => 'high',
 
@@ -113,9 +113,9 @@ class NotificationController extends Controller
 
         'notification' => array(
 
-            "body" =>  $message,
+            "body" =>  $request->message,
 
-            "title" =>  $title,
+            "title" =>  $request->title,
 
             "click_action" => "FLUTTER_NOTIFICATION_CLICK",
 
@@ -127,9 +127,9 @@ class NotificationController extends Controller
 
         'data' => array(
 
-            "pageid" => $pageid,
+            "pageid" => $request->pageid,
 
-            "pagename" => $pagename
+            "pagename" => $request->pagename
 
         )
 
@@ -141,7 +141,7 @@ class NotificationController extends Controller
 
 
 
-    $fields = json_encode($fields);
+    $fields = json_encode($request->fields);
 
     $headers = array(
 
