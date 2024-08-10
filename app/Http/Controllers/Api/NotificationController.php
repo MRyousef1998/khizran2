@@ -105,9 +105,9 @@ class NotificationController extends Controller
 
         "to" => $request->topic,
 
-        'priority' => 'high',
+        // 'priority' => 'high',
 
-        'content_available' => true,
+        // 'content_available' => true,
 
 
 
@@ -117,9 +117,9 @@ class NotificationController extends Controller
 
             "title" =>  $request->title,
 
-            "click_action" => "FLUTTER_NOTIFICATION_CLICK",
+            // "click_action" => "FLUTTER_NOTIFICATION_CLICK",
 
-            "sound" => "default"
+            // "sound" => "default"
 
 
 
