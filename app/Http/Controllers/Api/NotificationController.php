@@ -102,16 +102,9 @@ class NotificationController extends Controller
 
 
     $fields = array(
-
-        "to" => $request->topic,
-
-        // 'priority' => 'high',
-
-        // 'content_available' => true,
-
-
-
-        'notification' => array(
+     "message"=>   array(
+            "topic" => $request->topic,
+            'notification' => array(
 
             "body" =>  $request->message,
 
@@ -124,6 +117,17 @@ class NotificationController extends Controller
 
 
         ),
+    ),
+
+        
+
+        // 'priority' => 'high',
+
+        // 'content_available' => true,
+
+
+
+        
 
         'data' => array(
 
