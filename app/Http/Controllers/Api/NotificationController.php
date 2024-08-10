@@ -117,6 +117,13 @@ class NotificationController extends Controller
 
 
         ),
+        'data' => array(
+
+            "pageid" => $request->pageid,
+
+            "pagename" => $request->pagename
+
+        )
     ),
 
         
@@ -129,13 +136,7 @@ class NotificationController extends Controller
 
         
 
-        'data' => array(
-
-            "pageid" => $request->pageid,
-
-            "pagename" => $request->pagename
-
-        )
+     
 
 
 
