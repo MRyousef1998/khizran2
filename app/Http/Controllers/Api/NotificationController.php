@@ -103,7 +103,7 @@ class NotificationController extends Controller
 
     $fields = array(
 
-        "to" => '/topics/' . $request->topic,
+        "to" => $request->topic,
 
         'priority' => 'high',
 
