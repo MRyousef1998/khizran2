@@ -141,7 +141,7 @@ class NotificationController extends Controller
 
 
 
-    $fields = json_encode($request->fields);
+    $fields = json_encode($fields);
 
     $headers = array(
 
