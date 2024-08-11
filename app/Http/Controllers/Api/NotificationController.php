@@ -183,9 +183,12 @@ function sendGCMW(Request $request)
 {
     $url = 'https://fcm.googleapis.com/v1/projects/lastproject-f8b0f/messages:send';
 
-    $credentialsFilePath="json/google-services.json";
+    $credentialsFilePath="json/lastproject-f8b0f-b3b6f4993374.json";
+   
     $client= new GoogleClient();
+    
     $client->setAuthConfig($credentialsFilePath);
+ 
     $client->addScope('https://www.googleapis.com/auth/firebase.messaging');
     $client->refreshTokenWithAssertion();
     $token=$client->getAccessToken();
