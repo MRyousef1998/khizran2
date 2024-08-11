@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\api;
-
+require_once 'Google/Client.php';     
+require_once 'Google/Service/Analytics.php'; 
 
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Google_Client  as GoogleClient;
+use Google\Client as GoogleClient;
 use Illuminate\Support\Facades\Http;
-
 class NotificationController extends Controller
 {
     /**
@@ -184,15 +184,10 @@ class NotificationController extends Controller
 function sendGCMW(Request $request)
 
 {
-
-
-
-
-
     $url = 'https://fcm.googleapis.com/v1/projects/lastproject-f8b0f/messages:send';
 
-    $credentialsFilePath="json/google-services.json"
-    $client= new Google\Client();
+    $credentialsFilePath="json/google-services.json";
+    $client= new GoogleClient();
     $client->setAuthConfig($credentialsFilePath);
     $client->addScope('https://www.googleapis.com/auth/firebase.messaging');
     $client->refreshTokenWithAssertion();
