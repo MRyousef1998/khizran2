@@ -88,6 +88,8 @@ Route::group([
     Route::post('/get_order_app', [OrderAppController::class, 'show']);
 
     Route::post('/notification', [NotificationController::class, 'sendGCM']);
+    Route::post('/notification2', [NotificationController::class, 'sendGCMW']);
+
 
 
     

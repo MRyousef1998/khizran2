@@ -6,7 +6,8 @@ namespace App\Http\Controllers\api;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Google_Client  as GoogleClient;
+use Illuminate\Support\Facades\Http;
 
 class NotificationController extends Controller
 {
@@ -151,6 +152,104 @@ class NotificationController extends Controller
     $headers = array(
 
         'Authorization:Bearer '.$request->ApiToken,
+
+        'Content-Type: application/json'
+
+    );
+
+
+
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, $url);
+
+    curl_setopt($ch, CURLOPT_POST, true);
+
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+
+
+
+    $result = curl_exec($ch);
+
+    return $result;
+
+    curl_close($ch);
+
+}
+
+function sendGCMW(Request $request)
+
+{
+
+
+
+
+
+    $url = 'https://fcm.googleapis.com/v1/projects/lastproject-f8b0f/messages:send';
+
+    $credentialsFilePath="json/google-services.json"
+    $client= new GoogleClient();
+    $client->setAuthConfig($credentialsFilePath);
+    $client->addScope('https://www.googleapis.com/auth/firebase.messaging');
+    $client->refreshTokenWithAssertion();
+    $token=$client->getAccessToken();
+    $access_token=$token['access_token'];
+
+
+    $fields = array(
+     "message"=>   array(
+            "topic" => $request->topic,
+            'notification' => array(
+
+            "body" =>  $request->message,
+
+            "title" =>  $request->title,
+
+            // "click_action" => "FLUTTER_NOTIFICATION_CLICK",
+
+            // "sound" => "default"
+
+
+
+        ),
+        'data' => array(
+
+            "pageid" => $request->pageid,
+
+            "pagename" => $request->pagename
+
+        )
+    ),
+
+        
+
+        // 'priority' => 'high',
+
+        // 'content_available' => true,
+
+
+
+        
+
+     
+
+
+
+    );
+
+
+
+
+
+    $fields = json_encode($fields);
+
+    $headers = array(
+
+        'Authorization:Bearer '.$access_token,
 
         'Content-Type: application/json'
 
