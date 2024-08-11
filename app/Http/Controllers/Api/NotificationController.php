@@ -1,9 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\api;
-require_once 'Google/Client.php';     
-require_once 'Google/Service/Analytics.php'; 
-
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
