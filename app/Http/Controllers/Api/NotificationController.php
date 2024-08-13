@@ -281,7 +281,7 @@ function sendGCMW(Request $request)
 
  return response()->json([
             'message' => 'successfully',
-            'notification' => $notification
+            'notification' => $Notification
         ], 201);
     return $result;
 
