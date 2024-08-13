@@ -25,7 +25,7 @@ class NotificationController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -181,6 +181,17 @@ class NotificationController extends Controller
 function sendGCMW(Request $request)
 
 {
+    $Notification=  Notification::create([
+        'title' => $request->title,
+        'body' => $request->message,
+        'topic' => $request->topic,
+        'pageid' => $request->pageid,
+        'pagename' => $request->pagename,
+        
+        
+    ]);
+
+
     $url = 'https://fcm.googleapis.com/v1/projects/lastproject-f8b0f/messages:send';
 
     $credentialsFilePath="json/lastproject-f8b0f-b3b6f4993374.json";
@@ -268,6 +279,10 @@ function sendGCMW(Request $request)
 
     $result = curl_exec($ch);
 
+ return response()->json([
+            'message' => 'successfully',
+            'notification' => $notification
+        ], 201);
     return $result;
 
     curl_close($ch);

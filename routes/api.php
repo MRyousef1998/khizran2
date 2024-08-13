@@ -19,7 +19,9 @@ use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\OrderAppController;
 use App\Http\Controllers\Api\NotificationController;
+use App\Http\Controllers\Api\ExportOrder;
 
+use  App\Http\Controllers\Api;
 
 
 
@@ -84,8 +86,14 @@ Route::group([
 //////
 
     Route::post('/add_order_app', [OrderAppController::class, 'store']);
-    Route::post('/get_order_app111', [OrderAppController::class, 'destroy']);
+   // Route::post('/get_order_app111', [OrderAppController::class, 'destroy']);
     Route::post('/get_order_app', [OrderAppController::class, 'show']);
+
+    Route::post('/get_export_order', [ExportOrder::class, 'show']);
+
+    Route::post('/get_order_app111', [OrderAppController::class, 'destroy']);
+  
+
 
     Route::post('/notification', [NotificationController::class, 'sendGCM']);
     Route::post('/notification2', [NotificationController::class, 'sendGCMW']);
