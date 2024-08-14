@@ -20,7 +20,7 @@ class ExportOrderAppResource extends JsonResource
             'order_due_date'=>$this->order_due_date,
             'exporter_name'     =>$this->importer->name,
             'status_name'=>$this->status->status_name,
-            'file_url'=> $this->image_nam,
+            'file_url'=> $this->image_name,
             'total'=>$this->Total,
             'cont'=>$this->countAllItem(),
             'note'=>$this->note,
