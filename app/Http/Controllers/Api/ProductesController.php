@@ -102,13 +102,18 @@ class ProductesController extends Controller
         }
         
         $allData=ProductWithFavoriteRecource::collection($final_machines) ;
+//return $allData;
+        // $array = $allData->map(function($obj){
+        //   return (array) $obj;
+        // })->toArray();
+        $my_final_array=[];
+      foreach($allData as $data){
+        $my_final_array[]= $data;
+        
 
-        $array = $allData->map(function($obj){
-          return (array) $obj;
-        })->toArray();
-      
-      
-        $searchResult = $this->paginate($array);
+      }
+    
+        $searchResult = $this->paginate($my_final_array);
         return $searchResult;
       
           
@@ -124,6 +129,6 @@ class ProductesController extends Controller
       {
           $page = $page ?: (LengthAwarePaginator::resolveCurrentPage() ?: 1);
           $items = collect($items);
-          return new LengthAwarePaginator($items->forPage($page, 2), $items->count(), $perPage, $page, $options);
+          return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
       }  
 }
