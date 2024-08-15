@@ -11,6 +11,7 @@ use App\Models\Product;
 
 use App\Models\ProductCategory;
 use App\Models\favotit;
+use Illuminate\Pagination\LengthAwarePaginator;
 class ProductesController extends Controller
 {
     public function get_productes_with_category(Request $request){
@@ -99,14 +100,24 @@ class ProductesController extends Controller
           
           array_push($final_machines,$machines_of_this_category1);
         }
-  
-  
+        
+        
+        $allData = $this->paginate($final_machines);
+        return $allData;
       
-          $allData['machines_of_this_category']=ProductWithFavoriteRecource::collection( $final_machines) ;
+          
          
   
-          $allData["status"]="success";
+      
+          
   
-          return $allData; 
+    
       }
+
+      private function paginate(array $items, int $perPage = 8, ?int $page = null, $options = []): LengthAwarePaginator
+      {
+          $page = $page ?: (LengthAwarePaginator::resolveCurrentPage() ?: 1);
+          $items = collect($items);
+          return new LengthAwarePaginator($items->forPage($page, 2), $items->count(), $perPage, $page, $options);
+      }  
 }
