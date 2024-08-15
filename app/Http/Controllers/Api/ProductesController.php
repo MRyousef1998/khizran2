@@ -12,6 +12,8 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\favotit;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Collection;
 class ProductesController extends Controller
 {
     public function get_productes_with_category(Request $request){
@@ -126,9 +128,16 @@ class ProductesController extends Controller
       }
 
       private function paginate(array $items, int $perPage = 8, ?int $page = null, $options = []): LengthAwarePaginator
-      {
-         // $page = $page ?: (LengthAwarePaginator::resolveCurrentPage() ?: 1);
-          $items = collect($items);
-          return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+      {                                                                                                       
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+
+          $items = $items instanceof Collection ? $items : Collection::make($items);
+          return new LengthAwarePaginator(array_values($items->forPage($page, $perPage)
+    ->toArray()), $items->count(), $perPage, $page, $options);
+      //    return new LengthAwarePaginator($items->forPage($page, $perPage)->toArray(), $items->count(), $perPage, $page, $options);
       }  
 }
+// $items = $items instanceof Collection ? $items : Collection::make($items);
+
+// return new LengthAwarePaginator(array_values($items->forPage($page, $perPage)
+//     ->toArray()), $items->count(), $perPage, $page, $options);
