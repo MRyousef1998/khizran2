@@ -101,9 +101,15 @@ class ProductesController extends Controller
           array_push($final_machines,$machines_of_this_category1);
         }
         
-        
-        $allData = $this->paginate($final_machines);
-        return $allData;
+        $allData=ProductWithFavoriteRecource::collection($final_machines) ;
+
+        $array = $allData->map(function($obj){
+          return (array) $obj;
+        })->toArray();
+      
+      
+        $searchResult = $this->paginate($array);
+        return $searchResult;
       
           
          
