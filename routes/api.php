@@ -90,6 +90,12 @@ Route::group([
     Route::post('/get_order_app', [OrderAppController::class, 'show']);
 
     Route::post('/get_export_order', [ExportOrder::class, 'show']);
+   //////
+
+   Route::post('/get_detail_export_order', [ExportOrder::class, 'get_detailes']);
+
+   Route::post('/get_detail_machine_export_order', [ExportOrder::class, 'get_detailes_machine']);
+
 
     Route::post('/get_order_app111', [OrderAppController::class, 'destroy']);
   
