@@ -62,8 +62,8 @@ class ExportOrder extends Controller
            if($order_machine_detail->isEmpty()){
             $order_machine_detail=[[
                         "category_id"=>1,
-                        "item_count"=>0,
-                        "item_price"=>0
+                        "item_count"=>0.00,
+                        "item_price"=>0.00
                         
 
             ]];
@@ -71,8 +71,8 @@ class ExportOrder extends Controller
            if($order_grinder_detail->isEmpty()){
             $order_grinder_detail=[[
                         "category_id"=>2,
-                        "item_count"=>0,
-                        "item_price"=>0
+                        "item_count"=>0.00,
+                        "item_price"=>0.00
                         
 
             ]];
@@ -81,8 +81,8 @@ class ExportOrder extends Controller
            if($order_partes_detail->isEmpty()){
             $order_partes_detail=[[
                         "category_id"=>3,
-                        "item_count"=>0,
-                        "item_price"=>0
+                        "item_count"=>0.00,
+                        "item_price"=>0.00,
                         
 
             ]];
