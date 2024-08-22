@@ -90,15 +90,15 @@ class ProductesController extends Controller
               $machines_of_this_category1->favorit=1;
           }
 
-          if(!is_null(Product::where("product_details_id",$machines_of_this_category1->id)->where("selling_date",null)->first()))
+          if(is_null(Product::where("product_details_id",$machines_of_this_category1->id)->where("selling_date",null)->first()))
           {
       
-             $machines_of_this_category1->avileble=1;
+             $machines_of_this_category1->avileble=0;
               
           }
           else{
              
-              $machines_of_this_category1->avileble=0;
+              $machines_of_this_category1->avileble=1;
           }
           
           array_push($final_machines,$machines_of_this_category1);
