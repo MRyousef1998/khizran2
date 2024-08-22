@@ -75,6 +75,7 @@ class ProductesController extends Controller
           ->groupBy('product_details.id','company_name','product_name','country_of_manufacture','group_name','product_details.image_name','product_details.rate')->get();
        
           $final_machines=[];
+          
           foreach($machines_of_this_category as $machines_of_this_category1)
         {
          
@@ -89,7 +90,7 @@ class ProductesController extends Controller
               $machines_of_this_category1->favorit=1;
           }
 
-          if(is_null(Product::where("product_details_id",$machines_of_this_category1->id)->where("selling_date",null)->first()))
+          if(!is_null(Product::where("product_details_id",$machines_of_this_category1->id)->where("selling_date",null)->first()))
           {
       
              $machines_of_this_category1->avileble=1;
