@@ -132,12 +132,29 @@ class ExportOrder extends Controller
            ->leftJoin('statuses', 'products.statuses_id', '=', 'statuses.id') ->Join('order_product', 'products.id', '=', 'order_product.products_id')->where("order_product.orders_id", $request->order_id)->where("product_details.category_id", $request->category_id)
            ->selectRaw('product_details.id,company_name,product_name,group_name,country_of_manufacture,count(products.product_details_id) as aggregate,count(products.box_id) as box_count,product_details.image_name')
            ->groupBy('product_details.id','company_name','product_name','country_of_manufacture','group_name','product_details.image_name')->get();
-           $myMachines = $this->paginate([$machines]);
+           $my_final_array=[];
+           foreach($machines as $machine){
+             $my_final_array[]= $machine;
+
+           }
+     
+          
+          
+           $myMachines = $this->paginate($my_final_array);
            return $myMachines;
 
 
 
-
+           $my_final_array=[];
+           foreach($allData as $data){
+             $my_final_array[]= $data;
+             
+     
+           }
+         
+             $searchResult = $this->paginate($my_final_array);
+             return $searchResult;
+           
 
 
 
