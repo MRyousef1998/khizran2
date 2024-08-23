@@ -155,53 +155,40 @@ class ExportOrder extends Controller
              $searchResult = $this->paginate($my_final_array);
              return $searchResult;
            
-
-
-
-
-
-
-
-
-       
-           
-           
-        $invoices = Invoice::where('orders_id',$id)->first();
-           
-           $details  = InvoicesDetails::where('invoices_id',$invoices->id)->get();
-          
-           $exporter = User::where('role_id','=',1)->get();
-                $importer = User::where('role_id','=',2)->get();
-                $representative = User::where('role_id','=',3)->get();
-    
-            return view('order.export_order.details_order1',compact('order','machines','grinders','parts','details','invoices','exporter', 'importer','representative','id','boxes'));
-    
-            
-           
-    
-           
-    
-        
-
-
-        $exporOrder= Order::where('exported_id',$request->user_id)->get();
-         $allData['exporOrder']=ExportOrderAppResource::collection( $exporOrder) ;
-     
-
-        $allData["status"]="successfully";
-
-        return $allData; 
-        
-       
-        // return response()->json([
-        //     'message' => 'successfully',
-        //     'orderApp' => $exporOrder
-        // ], 201); 
     }
 
 
 
+       public function get_detail_machine_packing(Request $request)
+    {      
+      $detailProduct =DB::table('products')->where("products.product_details_id", $request->product_id)->
+      leftJoin('product_details', 'product_details.id', '=', 'products.product_details_id')->
+      leftJoin('boxes', 'boxes.id', '=', 'products.box_id')->
+      leftJoin('product_groups', 'product_details.group_id', '=', 'product_groups.id')->
+      leftJoin('product_companies', 'product_details.company_id', '=', 'product_companies.id')
+      ->leftJoin('statuses', 'products.statuses_id', '=', 'statuses.id') ->leftJoin('shipments', 'shipments.id', '=', 'boxes.shipment_id') 
+      ->Join('order_product', 'products.id', '=', 'order_product.products_id')->where("order_product.orders_id", $request->order_id)
 
+    ->  selectRaw('products.id as product_id,products.note,products.selling_date,products.selling_price_with_comm,box_code,
+      box_image_name,status_name,shipments.image_name as delevery_image,Name_driver_lansh,shiping_date')
+      -> get();
+
+
+      $my_final_array=[];
+      foreach($detailProduct as $detailProduct1){
+        $my_final_array[]= $detailProduct1;
+
+      }
+
+     
+     
+      $myMachines = $this->paginate($my_final_array);
+      return $myMachines;
+
+     return $detailProduct;
+
+
+    }
 
 
     public function get_detailes_grinder(Request $request)

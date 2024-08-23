@@ -96,7 +96,7 @@ Route::group([
 
    Route::post('/get_detail_machine_export_order', [ExportOrder::class, 'get_detailes_machine']);
 
-
+   Route::post('/get_detail_machine_packing', [ExportOrder::class, 'get_detail_machine_packing']);
     Route::post('/get_order_app111', [OrderAppController::class, 'destroy']);
   
 
