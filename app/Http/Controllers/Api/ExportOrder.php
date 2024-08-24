@@ -170,7 +170,7 @@ class ExportOrder extends Controller
       ->Join('order_product', 'products.id', '=', 'order_product.products_id')->where("order_product.orders_id", $request->order_id)
 
     ->  selectRaw('products.id as product_id,products.note,products.selling_date,products.selling_price_with_comm,box_code,
-      box_image_name,status_name,shipments.image_name as delevery_image,Name_driver_lansh,shiping_date')
+      box_image_name,status_name,shipments.image_name as delevery_image,Name_driver_lansh,shiping_date,products.box_id')
       -> get();
 
 
