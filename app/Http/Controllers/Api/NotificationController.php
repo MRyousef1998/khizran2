@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Google\Client as GoogleClient;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Collection;
 class NotificationController extends Controller
 {
     /**
@@ -87,13 +90,24 @@ class NotificationController extends Controller
     
     public function getNotification(Request $request)
     {
-      $address= Notification::where('topic',$request->topic)->orWhere('topic', '=', "users")->get();
-      return response()->json([
-          'message' => 'successfully',
-          'address' => $address
-      ], 201);
+      $notifications= Notification::where('topic',$request->topic)->orWhere('topic', '=', "users")->get();
+      
+
+      $my_final_array=[];
+      foreach($notifications as $notification){
+        $my_final_array[]= $notification;
+
+      }
+
+     
+     
+      $myNotification = $this->paginate($my_final_array);
+      return $myNotification;
 
     }
+
+
+
     
     function sendGCM(Request $request)
 
@@ -297,6 +311,14 @@ function sendGCMW(Request $request)
 
 }
 
+private function paginate(array $items, int $perPage = 8, ?int $page = null, $options = []): LengthAwarePaginator
+{                                                                                                       
+  $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
 
+    $items = $items instanceof Collection ? $items : Collection::make($items);
+    return new LengthAwarePaginator(array_values($items->forPage($page, $perPage)
+->toArray()), $items->count(), $perPage, $page, $options);
+//    return new LengthAwarePaginator($items->forPage($page, $perPage)->toArray(), $items->count(), $perPage, $page, $options);
+} 
 
 }
