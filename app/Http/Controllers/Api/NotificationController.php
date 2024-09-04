@@ -85,7 +85,15 @@ class NotificationController extends Controller
     }
    
     
-    
+    public function getNotification(Request $request)
+    {
+      $address= Notification::where('topic',$request->topic)->orWhere('topic', '=', "users")->get();
+      return response()->json([
+          'message' => 'successfully',
+          'address' => $address
+      ], 201);
+
+    }
     
     function sendGCM(Request $request)
 
@@ -288,4 +296,7 @@ function sendGCMW(Request $request)
     curl_close($ch);
 
 }
+
+
+
 }

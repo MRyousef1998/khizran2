@@ -104,8 +104,8 @@ Route::group([
     Route::post('/notification', [NotificationController::class, 'sendGCM']);
     Route::post('/notification2', [NotificationController::class, 'sendGCMW']);
 
-
-
+    Route::post('/get_notification', [NotificationController::class, 'getNotification']);
+    Route::post('/get_user_payment', [NotificationController::class, 'get_user_payment']);
     
     
 
