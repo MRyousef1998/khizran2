@@ -107,6 +107,6 @@ Route::group([
     Route::post('/get_notification', [NotificationController::class, 'getNotification']);
     Route::post('/get_user_payment', [NotificationController::class, 'get_user_payment']);
     
-    
+    Route::post('/order_payment_detailes', [ExportOrder::class, 'order_payment_detailes']);
 
 });

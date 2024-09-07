@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
+use App\Models\Invoice;
+use App\Models\InvoicesDetails;
 
 
 
@@ -221,7 +223,21 @@ class ExportOrder extends Controller
     }
 
 
+    public function order_payment_detailes(Request $request)
+    {    
+        
 
+     $invoice=Invoice::where('orders_id',$request->order_id)->first();
+     
+        $invoice_detailes =  InvoicesDetails::where('invoices_id',$invoice->id)->get();
+        return response()->json([
+          'message' => 'detailes get successfully',
+          'invoice' => $invoice,
+          "invoice_detailes"=>$invoice_detailes,
+        
+      ], 201);
+
+    }
 
 
     private function paginate(array $items, int $perPage = 8, ?int $page = null, $options = []): LengthAwarePaginator
