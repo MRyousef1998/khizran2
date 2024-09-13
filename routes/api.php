@@ -20,7 +20,7 @@ use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\OrderAppController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\ExportOrder;
-
+use App\Http\Controllers\Api\UserController;
 use  App\Http\Controllers\Api;
 
 
@@ -109,4 +109,6 @@ Route::group([
     
     Route::post('/order_payment_detailes', [ExportOrder::class, 'order_payment_detailes']);
 
+    Route::post('/user_balance', [UserController::class,'get_user_balance']);
+    Route::post('/user_payment', [UserController::class,'get_user_payment']);
 });
