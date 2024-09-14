@@ -224,8 +224,8 @@ session()->flash('Erorr', 'حدث خطأ غير متوقع  ');
         'company_id' => $company_id,
         'group_id' => $group_id,
         'category_id' => $category_id,
-        'rating' => $request->product_name,
-        'discraaption' => $request->product_name,
+        'rate' => $request->rating	,
+        'discraaption' => $request->discraaption,
 
         ]);
  
