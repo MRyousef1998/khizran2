@@ -377,7 +377,25 @@
                                     <option   >{{ $productGroup->group_name }}</option>
                                 @endforeach
                             </select>
+                            <div class="form-group">
+                                <label for="title">التفاصيل :</label>
 
+                                
+                            <input type="text" class="form-control" name="discraaption" id="discraaption" required>
+                            </div>
+                            <label for="title">التقيم :</label>
+                            <div class="input-group quantity" style=" ">
+                                            <div class="input-group-prepend decrement-btn" style="cursor: pointer">
+                                                <span class="input-group-text" >-</span>
+                                            </div>
+                                           
+                                            <input type="text" class="qty-input form-control  "  id= "rating" name ="rating"style="text-align: center;vertical-align: middle;" maxlength="3" max="10" value="0">
+                                            <div class="input-group-append increment-btn" style="cursor: pointer">
+                                                <span class="input-group-text"  >+</span>
+                                                
+                                            </div>
+                                           
+                                        </div>
                            
                             <h5 class="card-title">المرفقات</h5>
     
@@ -564,6 +582,99 @@
             modal.find('.modal-body #id').val(id);
         })
 
+</script>
+
+<script>
+
+    
+$(document).ready(function () {
+
+$('.increment-btn').click(function (e) {
+    e.preventDefault();
+    var incre_value = $(this).parents('.quantity').find('.qty-input').val();
+    var price_elem=$(this).parent().parent().parent().find('.price');
+    var com_price_elem=$(this).parent().parent().parent().find('.commission_pice');
+    var qty_av=$(this).parent().parent().parent().find('.qtyy').val();
+
+    
+    var mycheck= $(this).parent().parent().parent().find('.box1');
+
+    
+    var total=0.0;
+   
+
+
+    var value = parseInt(incre_value, 10);
+    value = isNaN(value) ? 0 : value;
+    if(value<100 && value<qty_av){
+        value++;
+        $(this).parents('.quantity').find('.qty-input').val(value);
+
+       
+
+        mycheck.attr('checked', true);
+      
+       
+       
+         
+      
+        price_elem.removeAttr("readonly");
+        com_price_elem.removeAttr("readonly");
+        
+        total=parseFloat(price_elem.val()*value )+parseFloat(com_price_elem.val()*value);
+    
+  
+        
+        var total_pirce_elem=$(this).parent().parent().parent().find('.total_price');
+        
+        total_pirce_elem.val(total);
+        
+
+        
+    }
+
+});
+
+$('.decrement-btn').click(function (e) {
+
+    e.preventDefault();
+    var decre_value = $(this).parents('.quantity').find('.qty-input').val();
+    var mycheck= $(this).parent().parent().parent().find('.box1');
+
+    var value = parseInt(decre_value, 10);
+    var price_elem=$(this).parent().parent().parent().find('.price');
+    var com_price_elem=$(this).parent().parent().parent().find('.commission_pice');
+    var total=0.0;
+    value = isNaN(value) ? 0 : value;
+    
+    if(value>0){
+        value--;
+        $(this).parents('.quantity').find('.qty-input').val(value);
+      
+       
+
+    
+   
+        total=parseFloat(price_elem.val()*value )+parseFloat(com_price_elem.val()*value);
+        
+       
+        
+        var total_pirce_elem=$(this).parent().parent().parent().find('.total_price');
+        total_pirce_elem.val(total);
+       
+     
+    }
+    if(value==0){
+         $(this).parent().parent().parent().find('.price').attr("readonly","true");
+         $(this).parent().parent().parent().find('.commission_pice').attr("readonly","true");
+         $(this).parent().parent().parent().find('.price').val(0);
+         $(this).parent().parent().parent().find('.commission_pice').val(0);
+         document.getElementById("total_price").value = 0;
+         mycheck.attr('checked', false);
+    }
+});
+
+});
 </script>
 <script>
 

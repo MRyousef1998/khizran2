@@ -185,6 +185,7 @@ session()->flash('Erorr', 'حدث خطأ غير متوقع  ');
       
         
         $input =$request->all();
+       
         $company_id = ProductCompany::where('company_name', $request->company_name)->first()->id;
         $category_id = ProductCategory::where('category_name', $request->product_category_name)->first()->id;
         $group_id = ProductGroup::where('group_name', $request->productG)->first()->id;
@@ -223,7 +224,8 @@ session()->flash('Erorr', 'حدث خطأ غير متوقع  ');
         'company_id' => $company_id,
         'group_id' => $group_id,
         'category_id' => $category_id,
-
+        'rating' => $request->product_name,
+        'discraaption' => $request->product_name,
 
         ]);
  
