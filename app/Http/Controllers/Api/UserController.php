@@ -123,7 +123,7 @@ class UserController extends Controller
                 'invoice_unpaid_count' => $invoice_unpaid->invoice_count,
                 'invoice_unpaid_amount' => $invoice_unpaid->sum,
                'totalRequird'=>$totalRequird,
-                    'totalRequird'=>$totalPayment,                
+                    'totalPayment'=>$totalPayment,                
 
             ], 201);
             }
