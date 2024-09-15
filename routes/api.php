@@ -21,6 +21,8 @@ use App\Http\Controllers\Api\OrderAppController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\ExportOrder;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\ShipmentController;
+
 use  App\Http\Controllers\Api;
 
 
@@ -111,4 +113,8 @@ Route::group([
 
     Route::post('/user_balance', [UserController::class,'get_user_balance']);
     Route::post('/user_payment', [UserController::class,'get_user_payment']);
+
+    Route::post('/user_shipmentes', [ShipmentController::class,'get_user_shipmentes']);
+
+    Route::post('/getShipmentDeteil', [ShipmentController::class,'getShipmentDeteil']);
 });
