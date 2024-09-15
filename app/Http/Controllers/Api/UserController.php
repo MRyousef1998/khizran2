@@ -148,16 +148,38 @@ class UserController extends Controller
           ->groupBy('invoices_details.payment_Date')->orderBy('invoices_details.payment_Date','DESC')
           ->get();
           
-
+          $my_final_array=[];
+          foreach($all_invoices_payments as $all_invoices_payment){
+            $my_final_array[]= $all_invoices_payment;
+    
+          }
+    
+         
+         
+          $myPayment = $this->paginate($my_final_array);
+          return $myPayment;
             return response()->json([
                 'message' => 'data get successfully',
                 'paymentes' => $all_invoices_payments,
                 
 
             ], 201);
+
+            
             }
 
 
+
+
+            private function paginate(array $items, int $perPage = 8, ?int $page = null, $options = []): LengthAwarePaginator
+{                                                                                                       
+  $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+
+    $items = $items instanceof Collection ? $items : Collection::make($items);
+    return new LengthAwarePaginator(array_values($items->forPage($page, $perPage)
+->toArray()), $items->count(), $perPage, $page, $options);
+//    return new LengthAwarePaginator($items->forPage($page, $perPage)->toArray(), $items->count(), $perPage, $page, $options);
+} 
 
 
     }
