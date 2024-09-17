@@ -71,8 +71,8 @@ class ProductesController extends Controller
           $machines_of_this_category =DB::table('product_details')->leftJoin('product_groups', 'product_details.group_id', '=', 'product_groups.id')->leftJoin('product_companies', 'product_details.company_id', '=', 'product_companies.id')
           
           ->where('company_name', 'like', '%' . $request->searchText . '%')->orWhere('product_name', 'like', '%' . $request->searchText . '%')->orWhere('group_name', 'like', '%' . $request->searchText . '%')
-          ->selectRaw('product_details.id,company_name,product_name,group_name,country_of_manufacture,product_details.image_name,product_details.rate')
-          ->groupBy('product_details.id','company_name','product_name','country_of_manufacture','group_name','product_details.image_name','product_details.rate')->get();
+          ->selectRaw('product_details.id,company_name,product_name,group_name,country_of_manufacture,product_details.image_name,product_details.rate,product_details.discraaption')
+          ->groupBy('product_details.id','company_name','product_name','country_of_manufacture','group_name','product_details.image_name','product_details.rate,product_details.discraaption')->get();
        
           $final_machines=[];
           
