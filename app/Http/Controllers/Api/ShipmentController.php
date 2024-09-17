@@ -49,15 +49,34 @@ class ShipmentController extends Controller
         // leftJoin('product_companies', 'product_details.company_id', '=', 'product_companies.id')
         //  ->get();
   
-        $detailBox =DB::table('products')->where("boxes.shipment_id",'=',$request->id)->
-        leftJoin('boxes', 'boxes.id', '=', 'products.box_id')->
-       leftJoin('product_details', 'product_details.id', '=', 'products.product_details_id')->
-       leftJoin('product_groups', 'product_details.group_id', '=', 'product_groups.id')->
-       leftJoin('product_companies', 'product_details.company_id', '=', 'product_companies.id')
-        ->get();
+      //   $detailBoxes =DB::table('products')->
+      //   leftJoin('boxes', 'boxes.id', '=', 'products.box_id')->where("boxes.shipment_id",'=',$request->id)->
+     
+      //  get();
+      $detailBoxes =DB::table('boxes')->
+      leftJoin('products', 'products.box_id', '=', 'boxes.id')->where("boxes.shipment_id",'=',$request->id)-> get();
+    return $detailBoxes;
+
+        $final_Box=[];
+        $image_arrey=[];
+        foreach($detailBoxes as $detailBox)
+      {
+        $MydetailBox =DB::table('products')->where("products.box_id", $detailBox->box_id)->
+         leftJoin('boxes', 'boxes.id', '=', 'products.box_id')->get();
+
+         foreach($MydetailBox as $MydetailBox1)
+         {
+          array_push($image_arrey,$MydetailBox1->box_image_name);
+         }
+         $detailBox->box_image_name=$image_arrey;
+        
+        array_push($final_Box,$detailBox);
+        $image_arrey=[];
+
+      }
 
        
-return $detailBox;
+return $final_Box;
        
 
     }
