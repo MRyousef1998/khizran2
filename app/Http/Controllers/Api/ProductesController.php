@@ -72,7 +72,7 @@ class ProductesController extends Controller
           
           ->where('company_name', 'like', '%' . $request->searchText . '%')->orWhere('product_name', 'like', '%' . $request->searchText . '%')->orWhere('group_name', 'like', '%' . $request->searchText . '%')
           ->selectRaw('product_details.id,company_name,product_name,group_name,country_of_manufacture,product_details.image_name,product_details.rate,product_details.discraaption')
-          ->groupBy('product_details.id','company_name','product_name','country_of_manufacture','group_name','product_details.image_name','product_details.rate,product_details.discraaption')->get();
+          ->groupBy('product_details.id','company_name','product_name','country_of_manufacture','group_name','product_details.image_name','product_details.rate','product_details.discraaption')->get();
        
           $final_machines=[];
           
