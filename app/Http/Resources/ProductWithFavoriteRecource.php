@@ -28,7 +28,7 @@ class ProductWithFavoriteRecource extends JsonResource
             'is_favorite'=>$this->favorit,
             'is_avilable'=>$this->avileble,
             'discraption'=>$this->discraaption,
-            'discraption'=>$this->online_price,
+            'online_price'=>$this->online_price,
 
         ];
     }
