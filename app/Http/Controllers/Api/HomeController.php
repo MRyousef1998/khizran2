@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ProductItemRecource;
 use App\Http\Resources\ProductWithFavoriteRecource;
+use App\Models\favotit;
 
 use App\Models\ProductCategory;
 use Illuminate\Support\Facades\DB;
