@@ -46,7 +46,7 @@ class HomeController extends Controller
         foreach($machines as $machine)
       {
        
-        if(is_null(favotit::where("user_id",$request->user_id)->where("product_details_id",$machines_of_this_category1->id)->first()))
+        if(is_null(favotit::where("user_id",$request->user_id)->where("product_details_id",$machine->id)->first()))
         {
     
            $machine->favorit=0;
