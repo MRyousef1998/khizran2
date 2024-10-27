@@ -67,8 +67,8 @@ Route::group([
 Route::group([
     'middleware' => 'api',
 ], function ($router) {
-    Route::get('/home-page', [HomeController::class, 'index']);
-    
+    Route::get('/home-page', [HomeController::class, 'index']); 
+    Route::get('/home-page2', [HomeController::class, 'index2']); 
     Route::post('/productes_categories', [ProductesController::class, 'get_productes_with_category']);
     Route::post('/search_product', [ProductesController::class, 'search_product']);
     Route::post('/add_favorite', [FavotitController::class, 'add_favorite']);
