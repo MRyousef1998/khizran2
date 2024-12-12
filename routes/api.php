@@ -22,7 +22,7 @@ use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\ExportOrder;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ShipmentController;
-
+use App\Http\Controllers\Api\CoponController;
 use  App\Http\Controllers\Api;
 
 
@@ -117,4 +117,5 @@ Route::group([
     Route::post('/user_shipmentes', [ShipmentController::class,'get_user_shipmentes']);
 
     Route::post('/getShipmentDeteil', [ShipmentController::class,'getShipmentDeteil']);
+    Route::post('/chek_copon', [CoponController::class,'chek_copon']);
 });

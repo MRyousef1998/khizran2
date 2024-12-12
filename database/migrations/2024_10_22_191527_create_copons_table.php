@@ -15,6 +15,13 @@ class CreateCoponsTable extends Migration
     {
         Schema::create('copons', function (Blueprint $table) {
             $table->id();
+            $table->string('copon_name');
+            $table->string('copon_code');
+            $table->integer('copon_count');
+            $table->integer('copon_discount');
+            $table->date('copone_expair_date');
+
+
             $table->timestamps();
         });
     }
