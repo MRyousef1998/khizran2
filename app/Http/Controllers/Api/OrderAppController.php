@@ -21,8 +21,33 @@ class OrderAppController extends Controller
      */
     public function index()
     {
-        
+         
     }
+
+
+    public function app_order_get_detailes(Request $request)
+    {
+        $cart_itemes =DB::table('carts')->where('user_id',$request->user_id)->where('order_app_id',$request->order_id)-> Join('product_details', 'product_details.id', '=', 'carts.product_details_id')
+        ->leftJoin('product_groups', 'product_details.group_id', '=', 'product_groups.id')->leftJoin('product_companies', 'product_details.company_id', '=', 'product_companies.id')
+        ->selectRaw('product_details.id as product_detailes_id,count(product_details.id) as count,company_name,product_name,group_name,country_of_manufacture,product_details.image_name,product_details.rate,product_details.online_price') 
+        ->groupBy('product_details.id','company_name','product_name','country_of_manufacture','group_name','product_details.image_name','product_details.rate','product_details.online_price')->get();
+        $orderApp= OrderApp::where('id',$request->order_id)->get();
+   
+   
+   
+        return response()->json([
+            'message' => 'cart itemes get successfully ',
+            'cartItem' => $cart_itemes,
+            'order_app'=>$orderApp
+        ], 201);
+    
+    
+    
+    }
+    
+
+
+
 
     /**
      * Show the form for creating a new resource.

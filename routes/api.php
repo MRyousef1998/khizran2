@@ -90,7 +90,7 @@ Route::group([
     Route::post('/add_order_app', [OrderAppController::class, 'store']);
    // Route::post('/get_order_app111', [OrderAppController::class, 'destroy']);
     Route::post('/get_order_app', [OrderAppController::class, 'show']);
-
+    Route::post('/get_order_app_detailes', [OrderAppController::class, 'app_order_get_detailes']);
     Route::post('/get_export_order', [ExportOrder::class, 'show']);
    //////
 
