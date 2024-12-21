@@ -32,15 +32,15 @@ class OrderAppController extends Controller
         ->selectRaw('product_details.id as product_detailes_id,count(product_details.id) as count,company_name,product_name,group_name,country_of_manufacture,product_details.image_name,product_details.rate,product_details.online_price') 
         ->groupBy('product_details.id','company_name','product_name','country_of_manufacture','group_name','product_details.image_name','product_details.rate','product_details.online_price')->get();
         
-        $orderApp =DB::table('order_apps')->where('order_apps.id',$request->order_id) ->leftJoin('addresses', 'order_apps.address_id','=', 'addresses.id')->get();
-        
+        $orderApp =DB::table('order_apps')->where('order_apps.id',$request->order_id)->first();
+        $shipingAddress =DB::table('addresses')->where('id',$orderApp->address_id)->get();
    
    
    
         return response()->json([
             'message' => 'cart itemes get successfully ',
             'cartItem' => $cart_itemes,
-            'order_app'=>$orderApp
+            'shipingAddress'=>$shipingAddress
         ], 201);
     
     
