@@ -31,7 +31,9 @@ class OrderAppController extends Controller
         ->leftJoin('product_groups', 'product_details.group_id', '=', 'product_groups.id')->leftJoin('product_companies', 'product_details.company_id', '=', 'product_companies.id')
         ->selectRaw('product_details.id as product_detailes_id,count(product_details.id) as count,company_name,product_name,group_name,country_of_manufacture,product_details.image_name,product_details.rate,product_details.online_price') 
         ->groupBy('product_details.id','company_name','product_name','country_of_manufacture','group_name','product_details.image_name','product_details.rate','product_details.online_price')->get();
-        $orderApp= OrderApp::where('id',$request->order_id)->get();
+        
+        $orderApp =DB::table('order_apps')->where('order_apps.id',$request->order_id) ->leftJoin('addresses', 'order_apps.address_id','=', 'addresses.id')->get();
+        
    
    
    
