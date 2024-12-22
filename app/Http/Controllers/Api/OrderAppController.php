@@ -79,6 +79,7 @@ class OrderAppController extends Controller
 
             'price_delevery' => $request->price_delevery,
             'order_price' => $request->order_price,
+            'discount'=>$request->discount
 
             
         ]);
