@@ -122,16 +122,8 @@ class ExportController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-           
-        
-     
-        $products=json_decode($request->my_hidden_input);
-       
+    {   $products=json_decode($request->my_hidden_input);
       
-      
-
-       
         if($request->pic==null){
             session()->flash('Erorr', 'يرجى ادخال ملف يوثق هذه الطلبية ');
             //  return $request;
@@ -158,7 +150,7 @@ class ExportController extends Controller
              'Value_VAT' => $request->Value_VAT,
 
              'Total' => $request->Total,
-
+            'writting_totale' => $request->writing_Total,
 
 
      
@@ -179,7 +171,7 @@ class ExportController extends Controller
             
             'Amount_collection' =>0 ,
             'Discount' =>0 ,
-            'Total' =>0 ,
+            'Total' =>$request->writing_Total ,
             'Value_Status' =>3 ,
           
             'note' =>"" ,

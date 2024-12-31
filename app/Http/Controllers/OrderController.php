@@ -107,8 +107,6 @@ class OrderController extends Controller
         $importer = User::where('role_id','=',2)->get();
         $representative = User::where('role_id','=',3)->get();
 
-       
-
         return view('order.add_import_order',compact('importClints','clients','productDetail','exporter', 'importer','representative'));
     }
 
@@ -120,6 +118,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        
         $myCarancyMull=1;
           
         if($request->carency==2){
@@ -167,7 +166,7 @@ class OrderController extends Controller
 
              'Total' => ($request->Total)*$myCarancyMull,
 
-
+             'writting_totale' => $request->writting_totale,
 
      
          ]);
@@ -186,7 +185,7 @@ class OrderController extends Controller
             
             'Amount_collection' =>0 ,
             'Discount' =>0 ,
-            'Total' =>0 ,
+            'Total' => $request->writting_totale ,
             'Value_Status' =>3 ,
           
             'note' =>"" ,

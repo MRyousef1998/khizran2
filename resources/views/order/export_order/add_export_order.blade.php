@@ -224,6 +224,10 @@
                                 <label for="inputName" class="control-label"> السعر الاجمالي مع العمولة مع الضريبة </label>
                                 <input type="text" class="form-control form-control-lg" id="Total" name="Total" value=0  readonly>
                             </div>
+                            <div class="col">
+                                <label for="inputName" class="control-label"> السعر الاجمالي  </label>
+                                <input type="text" class="form-control form-control-lg" id="writing_Total" name="writing_Total" value=0  >
+                            </div>
                         </div>
                         
 
