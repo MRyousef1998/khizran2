@@ -10,6 +10,17 @@ use Illuminate\Support\Facades\DB;
 
 class CoponController extends Controller
 {
+
+    public function get_copon(Request $request)
+    {
+        
+
+        $copon =DB::table('copons')->where('copon_count',">=",0)->where('copone_expair_date','>', Carbon::today())->get();
+     return response()->json([
+            'message' => 'copon get successfully ',
+            'copon' => $copon
+        ], 201);}
+
     public function chek_copon(Request $request)
     {
         
