@@ -118,5 +118,5 @@ Route::group([
 
     Route::post('/getShipmentDeteil', [ShipmentController::class,'getShipmentDeteil']);
     Route::post('/chek_copon', [CoponController::class,'chek_copon']);
-    Route::post('/get_copon', [CoponController::class,'get_copon']);
+    Route::get('/get_copon', [CoponController::class,'get_copon']);
 });
